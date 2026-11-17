@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A beginner-friendly digital safety learning assistant.">
+  <title>Digital Safety Assistant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Digital Safety Assistant home">
+        <span class="brand-mark">DS</span>
+        <span>Digital Safety <b>Assistant</b></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      <nav id="mainNav" class="main-nav">
+        <a href="#home" data-i18n="navHome">Home</a>
+        <a href="#learn" data-i18n="navLearn">Learn</a>
+        <a href="#checker" data-i18n="navChecker">Message Checker</a>
+        <a href="#quiz" data-i18n="navQuiz">Quiz</a>
+        <a href="#dashboard" data-i18n="navDashboard">Dashboard</a>
+        <a href="#scam-library" data-i18n="navLibrary">Scam Guide</a>
+        <a href="#spot-game" data-i18n="navGame">Spot Scam</a>
+      </nav>
+      <div class="nav-tools">
+        <label class="sr-only" for="languageSelect">Language</label>
+        <select id="languageSelect" aria-label="Choose language">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+        </select>
+        <button class="icon-btn" id="fontDown" title="Decrease font size" aria-label="Decrease font size">A−</button>
+        <button class="icon-btn" id="fontUp" title="Increase font size" aria-label="Increase font size">A+</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow" data-i18n="heroEyebrow">STAY ALERT. STAY SECURE.</p>
+          <h1 data-i18n="heroTitle">Your everyday guide to <span>digital safety.</span></h1>
+          <p class="hero-copy" data-i18n="heroCopy">Learn to spot online scams, protect your accounts and build safer digital habits — one small step at a time.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#learn" data-i18n="exploreBtn">Explore safety guide</a>
+            <a class="btn btn-light" href="#quiz" data-i18n="takeQuizBtn">Take the quiz</a>
+          </div>
+          <p class="hero-note" data-i18n="heroNote">Free learning tool • No account required • Your notes stay on this device</p>
+        </div>
+        <div class="hero-card">
+          <div class="shield">✓</div>
+          <p class="card-kicker" data-i18n="dailyTip">TODAY'S SAFETY TIP</p>
+          <h2 data-i18n="tipTitle">Pause before you tap.</h2>
+          <p data-i18n="tipCopy">Never share an OTP, PIN or password with anyone — even someone claiming to be from a bank.</p>
+          <span class="tip-tag" data-i18n="tipTag">Think • Verify • Protect</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="learn">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="learnEyebrow">LEARN THE BASICS</p>
+          <h2 data-i18n="learnTitle">Small habits. Stronger protection.</h2>
+          <p data-i18n="learnCopy">Understand common online risks and what you can do to stay safer.</p>
+        </div>
+        <div class="info-grid">
+          <article class="info-card"><span class="info-icon">🔐</span><h3 data-i18n="topic1Title">Strong passwords</h3><p data-i18n="topic1Copy">Use long, unique passwords. Turn on two-step verification wherever possible.</p></article>
+          <article class="info-card"><span class="info-icon">📩</span><h3 data-i18n="topic2Title">Phishing messages</h3><p data-i18n="topic2Copy">Be careful with urgent messages, unknown links and unexpected attachments.</p></article>
+          <article class="info-card"><span class="info-icon">💳</span><h3 data-i18n="topic3Title">Safe digital payments</h3><p data-i18n="topic3Copy">Never enter your UPI PIN to receive money. Check the receiver before paying.</p></article>
+          <article class="info-card"><span class="info-icon">🛡️</span><h3 data-i18n="topic4Title">Privacy protection</h3><p data-i18n="topic4Copy">Share less personal information publicly and review app permissions regularly.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="checker">
+      <div class="container two-column">
+        <div>
+          <p class="eyebrow" data-i18n="checkerEyebrow">QUICK SAFETY CHECK</p>
+          <h2 data-i18n="checkerTitle">Suspicious Message Checker</h2>
+          <p data-i18n="checkerCopy">Paste a message to check for common warning signs such as urgency, suspicious links or requests for sensitive information.</p>
+          <div class="notice"><b data-i18n="privacyTitle">Privacy reminder:</b> <span data-i18n="privacyCopy">Do not paste real OTPs, passwords, bank details or private information. This checker runs in your browser.</span></div>
+        </div>
+        <div class="panel">
+          <label for="messageInput" data-i18n="messageLabel">Paste message here</label>
+          <textarea id="messageInput" rows="5" data-placeholder="messagePlaceholder" placeholder="Example: Your account will be blocked. Click this link now..."></textarea>
+          <button class="btn btn-primary full" id="checkMessageBtn" data-i18n="checkBtn">Check message</button>
+          <div id="checkerResult" class="result-box" aria-live="polite" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="voice">
+      <div class="container voice-row">
+        <div>
+          <p class="eyebrow" data-i18n="voiceEyebrow">ACCESSIBILITY</p>
+          <h2 data-i18n="voiceTitle">Listen to a safety tip</h2>
+          <p data-i18n="voiceCopy">Use your browser's speech feature to hear a short safety reminder.</p>
+          <p id="voiceStatus" class="small-status" aria-live="polite" data-i18n="voiceReady">Voice assistant is ready.</p>
+        </div>
+        <div class="voice-actions">
+          <button class="btn btn-primary" id="speakBtn" data-i18n="speakBtn">▶ Listen</button>
+          <button class="btn btn-light" id="stopSpeakBtn" data-i18n="stopBtn">■ Stop</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="quiz">
+      <div class="container quiz-layout">
+        <div>
+          <p class="eyebrow" data-i18n="quizEyebrow">TEST YOUR KNOWLEDGE</p>
+          <h2 data-i18n="quizTitle">Cyber Safety Quiz</h2>
+          <p data-i18n="quizCopy">Answer five simple questions and see how much you know about staying safe online.</p>
+          <div class="quiz-stats"><span id="quizProgressText">0% completed</span><span id="quizCounter">Question 1 of 5</span></div>
+          <div class="progress-track"><div id="quizProgress" class="progress-fill"></div></div>
+        </div>
+        <div class="panel quiz-panel">
+          <div id="quizContent">
+            <h3 id="quizQuestion">Loading question...</h3>
+            <div id="quizOptions" class="quiz-options"></div>
+            <p id="quizFeedback" class="feedback" aria-live="polite"></p>
+            <button class="btn btn-primary full" id="nextQuestionBtn" disabled data-i18n="nextBtn">Next question</button>
+          </div>
+          <div id="quizResult" hidden>
+            <h3 data-i18n="quizComplete">Quiz complete!</h3>
+            <p id="quizScore" class="quiz-score"></p>
+            <p id="quizMessage"></p>
+            <button class="btn btn-primary full" id="restartQuizBtn" data-i18n="retryBtn">Try again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="checklist">
+      <div class="container two-column">
+        <div>
+          <p class="eyebrow" data-i18n="checklistEyebrow">BUILD SAFE HABITS</p>
+          <h2 data-i18n="checklistTitle">My Safety Checklist</h2>
+          <p data-i18n="checklistCopy">Tick the steps you have completed. Your progress is saved in this browser on this device.</p>
+          <div class="check-progress"><strong id="checklistCount">0 / 6 completed</strong><div class="progress-track"><div id="checklistProgress" class="progress-fill"></div></div></div>
+        </div>
+        <div class="panel checklist-panel" id="checklistItems">
+          <label class="check-item"><input type="checkbox" data-check="0"><span data-i18n="check1">I use a strong, unique password.</span></label>
+          <label class="check-item"><input type="checkbox" data-check="1"><span data-i18n="check2">I never share OTPs, PINs or passwords.</span></label>
+          <label class="check-item"><input type="checkbox" data-check="2"><span data-i18n="check3">I verify links before opening them.</span></label>
+          <label class="check-item"><input type="checkbox" data-check="3"><span data-i18n="check4">I keep my phone and apps updated.</span></label>
+          <label class="check-item"><input type="checkbox" data-check="4"><span data-i18n="check5">I review privacy and app permissions.</span></label>
+          <label class="check-item"><input type="checkbox" data-check="5"><span data-i18n="check6">I know how to report cyber fraud.</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="notes">
+      <div class="container two-column">
+        <div>
+          <p class="eyebrow" data-i18n="notesEyebrow">PERSONAL RECORD</p>
+          <h2 data-i18n="notesTitle">Suspicious Activity Notes</h2>
+          <p data-i18n="notesCopy">Record a brief note if you notice something suspicious. Do not enter passwords, OTPs, account numbers or other sensitive details.</p>
+          <p class="small-status" data-i18n="notesLocal">Notes are saved only in this browser. They are not sent to the police or any organisation.</p>
+        </div>
+        <div class="panel">
+          <label for="noteCategory" data-i18n="categoryLabel">Category</label>
+          <select id="noteCategory">
+            <option value="Suspicious call" data-i18n="catCall">Suspicious call</option>
+            <option value="Suspicious message" data-i18n="catMessage">Suspicious message</option>
+            <option value="Payment concern" data-i18n="catPayment">Payment concern</option>
+            <option value="Other" data-i18n="catOther">Other</option>
+          </select>
+          <label for="noteText" data-i18n="noteLabel">Short note (no sensitive details)</label>
+          <textarea id="noteText" rows="3" data-placeholder="notePlaceholder" placeholder="What happened?"></textarea>
+          <button class="btn btn-primary full" id="saveNoteBtn" data-i18n="saveNoteBtn">Save note on this device</button>
+          <div id="notesList" class="notes-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="dashboard">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="dashboardEyebrow">YOUR PROGRESS</p>
+          <h2 data-i18n="dashboardTitle">Safety Dashboard</h2>
+          <p data-i18n="dashboardCopy">A quick view of your learning and safety checklist progress on this device.</p>
+        </div>
+        <div class="dashboard-grid">
+          <article class="stat-card"><span class="stat-icon">☑</span><p data-i18n="statChecklist">Checklist completed</p><strong id="dashChecklist">0 / 6</strong></article>
+          <article class="stat-card"><span class="stat-icon">🏆</span><p data-i18n="statQuiz">Latest quiz score</p><strong id="dashQuiz">Not attempted</strong></article>
+          <article class="stat-card"><span class="stat-icon">📝</span><p data-i18n="statNotes">Saved notes</p><strong id="dashNotes">0</strong></article>
+          <article class="stat-card"><span class="stat-icon">🔎</span><p data-i18n="statChecks">Messages checked</p><strong id="dashChecks">0</strong></article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="scam-library">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="libraryEyebrow">LEARN TO RECOGNISE SCAMS</p>
+          <h2 data-i18n="libraryTitle">Scam Awareness Library</h2>
+          <p data-i18n="libraryCopy">Simple examples of common scams and the safest next step.</p>
+        </div>
+        <div class="library-tools">
+          <label class="sr-only" for="librarySearch" data-i18n="librarySearchLabel">Search scam topics</label>
+          <input id="librarySearch" type="search" data-placeholder="librarySearchPlaceholder" placeholder="Search topics: UPI, KYC, lottery...">
+        </div>
+        <div class="info-grid library-grid" id="libraryCards">
+          <article class="info-card library-card" data-search="upi payment collect pin money">
+            <span class="info-icon">💸</span><h3 data-i18n="scamUpiTitle">UPI payment scam</h3>
+            <p data-i18n="scamUpiCopy">A stranger says you must enter your UPI PIN to receive money. You do not need a UPI PIN to receive money.</p>
+            <button class="text-action read-card" type="button" data-i18n="readAloudBtn">🔊 Read aloud</button>
+          </article>
+          <article class="info-card library-card" data-search="kyc bank account blocked update">
+            <span class="info-icon">🏦</span><h3 data-i18n="scamKycTitle">Fake KYC warning</h3>
+            <p data-i18n="scamKycCopy">A message threatens to block your account unless you open a link. Contact your bank using its official app or number.</p>
+            <button class="text-action read-card" type="button" data-i18n="readAloudBtn">🔊 Read aloud</button>
+          </article>
+          <article class="info-card library-card" data-search="lottery prize reward gift winner">
+            <span class="info-icon">🎁</span><h3 data-i18n="scamPrizeTitle">Lottery or prize scam</h3>
+            <p data-i18n="scamPrizeCopy">A caller says you won a prize but must pay a fee first. Do not pay to claim an unexpected prize.</p>
+            <button class="text-action read-card" type="button" data-i18n="readAloudBtn">🔊 Read aloud</button>
+          </article>
+          <article class="info-card library-card" data-search="job work from home recruitment fee">
+            <span class="info-icon">💼</span><h3 data-i18n="scamJobTitle">Fake job offer</h3>
+            <p data-i18n="scamJobCopy">A recruiter asks for money or sensitive documents before a verified offer. Check the company independently.</p>
+            <button class="text-action read-card" type="button" data-i18n="readAloudBtn">🔊 Read aloud</button>
+          </article>
+          <article class="info-card library-card" data-search="phishing link password otp message">
+            <span class="info-icon">🔗</span><h3 data-i18n="scamPhishTitle">Phishing link</h3>
+            <p data-i18n="scamPhishCopy">A link imitates a trusted website and asks you to sign in. Open the official app or type the known website address yourself.</p>
+            <button class="text-action read-card" type="button" data-i18n="readAloudBtn">🔊 Read aloud</button>
+          </article>
+          <article class="info-card library-card" data-search="remote access screen sharing app">
+            <span class="info-icon">📱</span><h3 data-i18n="scamRemoteTitle">Remote access trick</h3>
+            <p data-i18n="scamRemoteCopy">Someone asks you to install an app or share your screen to “fix” a payment. Do not give unknown people access to your device.</p>
+            <button class="text-action read-card" type="button" data-i18n="readAloudBtn">🔊 Read aloud</button>
+          </article>
+        </div>
+        <p id="libraryNoResults" class="small-status" hidden data-i18n="libraryNoResults">No matching topic found.</p>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="emergency-guide">
+      <div class="container two-column">
+        <div>
+          <p class="eyebrow" data-i18n="guideEyebrow">STEP-BY-STEP SUPPORT</p>
+          <h2 data-i18n="guideTitle">Emergency Help Guide</h2>
+          <p data-i18n="guideCopy">If you think you have been scammed, stay calm. Use these general steps and seek help from a trusted adult or official service.</p>
+          <a class="btn btn-primary" href="tel:1930" data-i18n="guideCall">Call 1930 in India</a>
+        </div>
+        <div class="panel guide-panel">
+          <details open><summary data-i18n="guideStep1Title">1. Stop the interaction</summary><p data-i18n="guideStep1Copy">Stop replying, stop payments and do not share any more information. Do not follow instructions from the suspicious caller.</p></details>
+          <details><summary data-i18n="guideStep2Title">2. Contact your bank or payment provider</summary><p data-i18n="guideStep2Copy">Use the official app, website or number printed on your card. Ask them to secure your account or payment method.</p></details>
+          <details><summary data-i18n="guideStep3Title">3. Report financial cyber fraud</summary><p data-i18n="guideStep3Copy">In India, call 1930 as soon as possible for cyber financial fraud and visit cybercrime.gov.in for the official reporting process.</p></details>
+          <details><summary data-i18n="guideStep4Title">4. Keep evidence safely</summary><p data-i18n="guideStep4Copy">Keep transaction references and message screenshots. Do not post private details publicly. Ask a trusted adult to help.</p></details>
+          <p class="guide-caution" data-i18n="guideCaution">This guide is educational and is not a substitute for advice from your bank, police or an official authority.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="read-aloud">
+      <div class="container voice-row">
+        <div>
+          <p class="eyebrow" data-i18n="readEyebrow">EASY LISTENING</p>
+          <h2 data-i18n="readTitle">Read Aloud Mode</h2>
+          <p data-i18n="readCopy">Listen to the main safety reminder in your selected language.</p>
+        </div>
+        <div class="voice-actions">
+          <button class="btn btn-primary" id="readMainBtn" data-i18n="readMainBtn">🔊 Read safety reminder</button>
+          <button class="btn btn-light" id="readStopBtn" data-i18n="readStopBtn">Stop reading</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="badges">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="badgeEyebrow">CELEBRATE YOUR PROGRESS</p>
+          <h2 data-i18n="badgeTitle">My Achievement Badges</h2>
+          <p data-i18n="badgeCopy">Earn badges as you learn and complete safety activities on this device.</p>
+        </div>
+        <div class="badge-grid">
+          <article class="badge-card" id="badgeQuiz"><span>🏅</span><h3 data-i18n="badgeQuizTitle">Quiz Starter</h3><p data-i18n="badgeQuizCopy">Complete the cyber safety quiz.</p><strong class="badge-status" data-i18n="badgeLocked">Not earned yet</strong></article>
+          <article class="badge-card" id="badgeChecklist"><span>🛡️</span><h3 data-i18n="badgeChecklistTitle">Safety Planner</h3><p data-i18n="badgeChecklistCopy">Complete all checklist steps.</p><strong class="badge-status" data-i18n="badgeLocked">Not earned yet</strong></article>
+          <article class="badge-card" id="badgeGame"><span>🔎</span><h3 data-i18n="badgeGameTitle">Scam Spotter</h3><p data-i18n="badgeGameCopy">Score at least 2 in the Spot the Scam game.</p><strong class="badge-status" data-i18n="badgeLocked">Not earned yet</strong></article>
+          <article class="badge-card" id="badgeFeedback"><span>💬</span><h3 data-i18n="badgeFeedbackTitle">Helpful Voice</h3><p data-i18n="badgeFeedbackCopy">Submit feedback about the website.</p><strong class="badge-status" data-i18n="badgeLocked">Not earned yet</strong></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="dos-donts">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="rulesEyebrow">REMEMBER THESE RULES</p>
+          <h2 data-i18n="rulesTitle">Digital Safety: Do's and Don'ts</h2>
+          <p data-i18n="rulesCopy">Simple rules for everyday phone, social media and payment use.</p>
+        </div>
+        <div class="rules-grid">
+          <article class="rules-card do-card"><h3 data-i18n="doTitle">✓ Do</h3><ul><li data-i18n="do1">Use a different password for important accounts.</li><li data-i18n="do2">Verify payment requests with the person through another channel.</li><li data-i18n="do3">Install apps from official app stores.</li><li data-i18n="do4">Ask a trusted person if a message feels confusing or urgent.</li></ul></article>
+          <article class="rules-card dont-card"><h3 data-i18n="dontTitle">✕ Don't</h3><ul><li data-i18n="dont1">Never share OTP, PIN, CVV or passwords.</li><li data-i18n="dont2">Do not scan an unknown QR code to receive money.</li><li data-i18n="dont3">Do not install remote-access apps at a stranger's request.</li><li data-i18n="dont4">Do not forward unverified offers or warnings.</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="spot-game">
+      <div class="container quiz-layout">
+        <div>
+          <p class="eyebrow" data-i18n="gameEyebrow">PRACTISE SAFELY</p>
+          <h2 data-i18n="gameTitle">Spot the Scam Game</h2>
+          <p data-i18n="gameCopy">Read each fictional sample and choose the safest response. These are practice examples, not real messages.</p>
+          <p class="small-status" id="gameScoreText" data-i18n="gameScoreStart">Your score: 0 / 3</p>
+        </div>
+        <div class="panel">
+          <p class="game-label" data-i18n="sampleMessage">FICTIONAL SAMPLE MESSAGE</p>
+          <blockquote id="gameScenario" class="game-scenario"></blockquote>
+          <div id="gameOptions" class="quiz-options"></div>
+          <p id="gameFeedback" class="feedback" aria-live="polite"></p>
+          <button class="btn btn-primary full" id="gameNextBtn" disabled data-i18n="gameNext">Next example</button>
+          <button class="btn btn-light full" id="gameRestartBtn" hidden data-i18n="gameRestart">Play again</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="trusted-contact">
+      <div class="container two-column">
+        <div>
+          <p class="eyebrow" data-i18n="contactEyebrow">PLAN AHEAD</p>
+          <h2 data-i18n="contactTitle">My Trusted Contact</h2>
+          <p data-i18n="contactCopy">Save a trusted family member or support person's name and phone number on this device, so you can find it when you need help.</p>
+          <p class="small-status" data-i18n="contactPrivacy">Only save a contact with their permission. This information stays in this browser and is not uploaded.</p>
+        </div>
+        <div class="panel">
+          <label for="trustedName" data-i18n="contactNameLabel">Contact name</label>
+          <input id="trustedName" type="text" maxlength="60" autocomplete="name" placeholder="Name">
+          <label for="trustedPhone" data-i18n="contactPhoneLabel">Phone number</label>
+          <input id="trustedPhone" type="tel" maxlength="20" autocomplete="tel" placeholder="Phone number">
+          <button class="btn btn-primary full" id="saveContactBtn" data-i18n="saveContactBtn">Save trusted contact</button>
+          <div id="trustedContactCard" class="contact-card" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="feedback">
+      <div class="container two-column">
+        <div>
+          <p class="eyebrow" data-i18n="feedbackEyebrow">HELP US IMPROVE</p>
+          <h2 data-i18n="feedbackTitle">Feedback and Learning Survey</h2>
+          <p data-i18n="feedbackCopy">Tell us whether the website was easy to understand. Do not include personal, financial or account information.</p>
+          <p class="small-status" data-i18n="feedbackLocal">Feedback is saved locally on this device for this demonstration.</p>
+        </div>
+        <div class="panel">
+          <label for="feedbackRating" data-i18n="ratingLabel">How easy was the website to use?</label>
+          <select id="feedbackRating">
+            <option value="5" data-i18n="rating5">5 - Very easy</option>
+            <option value="4" data-i18n="rating4">4 - Easy</option>
+            <option value="3" data-i18n="rating3">3 - Okay</option>
+            <option value="2" data-i18n="rating2">2 - Difficult</option>
+            <option value="1" data-i18n="rating1">1 - Very difficult</option>
+          </select>
+          <label for="feedbackText" data-i18n="feedbackLabel">What did you learn or what can we improve?</label>
+          <textarea id="feedbackText" rows="3" maxlength="300" data-placeholder="feedbackPlaceholder" placeholder="Write a short response (optional)"></textarea>
+          <button class="btn btn-primary full" id="submitFeedbackBtn" data-i18n="submitFeedbackBtn">Submit feedback</button>
+          <p id="feedbackStatus" class="small-status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section emergency-section" id="help">
+      <div class="container emergency-content">
+        <div><p class="eyebrow" data-i18n="helpEyebrow">NEED OFFICIAL HELP?</p><h2 data-i18n="helpTitle">Report cyber financial fraud quickly.</h2><p data-i18n="helpCopy">In India, call 1930 for cyber financial fraud or use the National Cyber Crime Reporting Portal. If you are in immediate danger, contact local emergency services and a trusted adult.</p></div>
+        <div class="emergency-actions"><a class="btn btn-white" href="tel:1930" data-i18n="call1930">Call 1930</a><a class="btn btn-outline-white" href="https://cybercrime.gov.in/" target="_blank" rel="noopener noreferrer" data-i18n="portalBtn">Official cybercrime portal ↗</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row"><a class="brand footer-brand" href="#home"><span class="brand-mark">DS</span><span>Digital Safety <b>Assistant</b></span></a><p data-i18n="footerText">An educational community service prototype. Stay alert and verify before you act.</p><span>© <span id="year"></span></span></div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
